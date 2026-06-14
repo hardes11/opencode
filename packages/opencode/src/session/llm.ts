@@ -321,14 +321,6 @@ const live: Layer.Layer<
                       input.model,
                       prepared.messageTransformOptions,
                     )
-                    // Dump raw prompt to stderr
-                    const dump = JSON.stringify(args.params.prompt.map((m: any) => ({
-                      role: m.role,
-                      cl: Array.isArray(m.content) ? m.content.length : String(m.content||"").length,
-                      rp: Array.isArray(m.content) && m.content.some((p: any) => p.type === "reasoning"),
-                      rc: !!(m.providerOptions as any)?.openaiCompatible?.reasoning_content,
-                    })))
-                    console.error("[RAW-PROMPT]", dump)
                   }
                   return args.params
                 },
